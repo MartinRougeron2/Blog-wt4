@@ -1,6 +1,7 @@
 // CRUD for Question model
 const express = require('express')
 
+
 const router = new express.Router();
 
 // swagger
@@ -14,25 +15,43 @@ const router = new express.Router();
  *     produces:
  *       - application/json
  *     parameters:
- *       - name: title
- *         description: Question title.
+ *       - name: Question object request body
+ *         description: Question object request body.
  *         in: body
  *         required: true
- *         type: string
- *       - name: body
- *         description: Question body.
- *         in: body
- *         required: true
- *         type: string
+ *         type: object
+ *         schema:
+ *           properties:
+ *             title:
+ *               type: string
+ *               required: true
+ *               description: Question title
+ *               example: "How to create a REST API?"
+ *               minLength: 1
+ *               maxLength: 100
+ *               pattern: "^[a-zA-Z0-9 ]+$"
+ *             body:
+ *               type: string
+ *               required: true
+ *               description: Question body
+ *               example: "I want to create a REST API using Node.js and Express.js. How can I do that?"
+ *               minLength: 1
+ *               maxLength: 1000
+ *               pattern: "^[a-zA-Z0-9 ]+$"
+ *               default: ""
  *     responses:
- *       200:
+ *       201:
  *         description: Successfully created
+ *         schema:
+ *           $ref: '#/definitions/Question'
  *       500:
  *         description: Server error
  */
 
-router.post('questions/', (req, res) => {
-
+router.post('/questions/', (req, res) => {
+    console.log("create a new question")
+    console.log(req.body)
+    res.status(201).send(req.body);
 });
 
 // swagger
@@ -48,12 +67,17 @@ router.post('questions/', (req, res) => {
  *     responses:
  *       200:
  *         description: A successful response
+ *         schema:
+ *           type: array
+ *           items:
+ *             $ref: '#/definitions/Question'
+ *             type: object
  *       500:
  *         description: Server error
  */
 
-router.get('questions/', (req, res) => {
-
+router.get('/questions/', (req, res) => {
+    console.log("get all questions")
 });
 
 // swagger
@@ -79,7 +103,7 @@ router.get('questions/', (req, res) => {
  *         description: Server error
  */
 
-router.get('questions/:question_id/', (req, res) => {
+router.get('/questions/:question_id/', (req, res) => {
 
 });
 
@@ -116,7 +140,7 @@ router.get('questions/:question_id/', (req, res) => {
  *         description: Server error
  */
 
-router.put('questions/:question_id/', (req, res) => {
+router.put('/questions/:question_id/', (req, res) => {
 
 });
 
@@ -143,7 +167,7 @@ router.put('questions/:question_id/', (req, res) => {
  *         description: Server error
  */
 
-router.put('questions/:question_id/', (req, res) => {
+router.put('/questions/:question_id/', (req, res) => {
 
 });
 
@@ -170,7 +194,7 @@ router.put('questions/:question_id/', (req, res) => {
  *         description: Server error
  */
 
-router.delete('questions/:question_id/', (req, res) => {
+router.delete('/questions/:question_id/', (req, res) => {
 
 });
 

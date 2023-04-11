@@ -19,10 +19,10 @@ const router = new express.Router();
 // swagger
 /**
  * @swagger
- * /api/users/login:
+ * /api/auth/login:
  *   post:
  *     tags:
- *       - Users
+ *       - Auth
  *     description: Login user
  *     produces:
  *       - application/json
@@ -44,17 +44,17 @@ const router = new express.Router();
  *         description: Server error
  */
 
-router.post('users/login/', (req, res) => {
+router.post('auth/login/', (req, res) => {
 
 });
 
 // swagger
 /**
  * @swagger
- * /api/users/register:
+ * /api/auth/register:
  *   post:
  *     tags:
- *       - Users
+ *       - Auth
  *     description: Register user
  *     produces:
  *       - application/json
@@ -81,17 +81,17 @@ router.post('users/login/', (req, res) => {
  *         description: Server error
  */
 
-router.post('users/register/', (req, res) => {
+router.post('auth/register/', (req, res) => {
 
 });
 
 // swagger
 /**
  * @swagger
- * /api/users/token/refresh:
+ * /api/auth/token/refresh:
  *  post:
  *     tags:
- *       - Users
+ *       - Auth
  *     description: Refresh token
  *     produces:
  *       - application/json
@@ -108,17 +108,17 @@ router.post('users/register/', (req, res) => {
  *         description: Server error
  */
 
-router.post('users/token/refresh/', (req, res) => {
+router.post('auth/token/refresh/', (req, res) => {
 
 });
 
 // swagger
 /**
  * @swagger
- * /api/users/token/verify:
- *  post:
+ * /api/auth/token/verify:
+ *  get:
  *     tags:
- *       - Users
+ *       - Auth
  *     description: Verify token
  *     produces:
  *       - application/json
@@ -134,7 +134,7 @@ router.post('users/token/refresh/', (req, res) => {
  *       500:
  *         description: Server error
  */
-router.post('users/token/verify/', (req, res) => {
+router.get('auth/token/verify/', (req, res) => {
 
 });
 
