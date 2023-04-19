@@ -1,4 +1,4 @@
-import User from '../../../models/User';
+const User = require('../../../models/User');
 
 async function getUser(req, res) {
     const { id } = req.params;
@@ -16,4 +16,4 @@ async function getUsers(req, res) {
     res.status(200).json(users);
 }
 
-export { getUser, getUsers };
+module.exports = { getUser, getUsers };

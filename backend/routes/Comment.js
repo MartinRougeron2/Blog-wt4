@@ -3,7 +3,7 @@ const express = require('express')
 
 const router = new express.Router();
 
-const handlers = require('handlers/comment');
+const handlers = require('./handlers/comment');
 
 // swagger
 /**
@@ -71,8 +71,8 @@ router.post('questions/:question_id/answers/:answer_id/comments/', (req, res) =>
 
 router.get('questions/:question_id/answers/:answer_id/comments/', (req, res) => {
 
-});
     handlers.get(req, res).then(r => r).catch(e => e);
+});
 // swagger
 /**
  * @swagger

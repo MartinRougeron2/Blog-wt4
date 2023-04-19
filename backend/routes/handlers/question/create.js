@@ -1,4 +1,4 @@
-import Question from '../../../models/Question';
+const Question = require('../../../models/Question');
 
 async function createQuestion(req, res) {
     const { title, description } = req.body;
@@ -12,4 +12,4 @@ async function createQuestion(req, res) {
     res.status(201).json(question);
 }
 
-export default createQuestion;
+module.exports = createQuestion;

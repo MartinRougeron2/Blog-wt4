@@ -1,4 +1,4 @@
-import Answer from '../../../models/Answer';
+const Answer = require('../../../models/Answer');
 
 async function handleUpdateAnswer(req, res, next) {
     const { answerId } = req.params;
@@ -18,4 +18,4 @@ async function handleUpdateAnswer(req, res, next) {
     res.status(200).json(answer);
 }
 
-export default handleUpdateAnswer;
+module.exports = handleUpdateAnswer;

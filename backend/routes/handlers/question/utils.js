@@ -1,4 +1,4 @@
-import Question from '../../../models/Question';
+const Question = require('../../../models/Question');
 
 async function upvoteQuestion(req, res) {
     const { id } = req.params;
@@ -17,4 +17,4 @@ async function upvoteQuestion(req, res) {
     res.status(200).json(question);
 }
 
-export default upvoteQuestion;
+module.exports = upvoteQuestion;

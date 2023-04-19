@@ -1,4 +1,4 @@
-import Question from '../../../models/Question';
+const Question = require('../../../models/Question');
 
 async function updateQuestion(req, res) {
     const { id } = req.params;
@@ -20,4 +20,4 @@ async function updateQuestion(req, res) {
     res.status(200).json(question);
 }
 
-export default updateQuestion;
+module.exports = updateQuestion;

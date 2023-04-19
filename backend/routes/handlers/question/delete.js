@@ -1,4 +1,4 @@
-import Question from '../../../models/Question';
+const Question = require('../../../models/Question');
 
 async function deleteQuestion(req, res) {
     const { id } = req.params;
@@ -15,4 +15,4 @@ async function deleteQuestion(req, res) {
     res.status(204).end();
 }
 
-export default deleteQuestion;
+module.exports = deleteQuestion;

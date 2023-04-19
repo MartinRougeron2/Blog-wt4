@@ -20,4 +20,4 @@ async function register(req, res){
     res.status(201).json({token});
 }
 
-export default register;
+module.exports = register;

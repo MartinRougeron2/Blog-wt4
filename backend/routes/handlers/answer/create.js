@@ -1,4 +1,4 @@
-import Answer from "../../../models/Answer";
+const Answer = require('../../../models/Answer');
 
 async function handleCreateAnswer (req, res, next) {
     const {questionId} = req.params
@@ -29,4 +29,4 @@ async function handleCreateAnswer (req, res, next) {
     });
 }
 
-export default handleCreateAnswer;
+module.exports = handleCreateAnswer;

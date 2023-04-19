@@ -1,10 +1,10 @@
-import createQuestion from './create';
-import updateQuestion from './put';
-import deleteQuestion from './delete';
-import {getQuestion, getQuestions} from './get';
-import upvoteQuestion from 'utils';
+const createQuestion = require('./create');
+const updateQuestion = require('./put');
+const deleteQuestion = require('./delete');
+const {getQuestion, getQuestions} = require('./get');
+const upvoteQuestion = require('./utils');
 
-export default {
+module.exports = {
     post: createQuestion,
     put: updateQuestion,
     delete: deleteQuestion,

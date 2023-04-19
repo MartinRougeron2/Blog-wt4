@@ -1,4 +1,4 @@
-import Comment from '../../../models/Comment';
+const Comment = require('../../../models/Comment');
 
 async function deleteComment(req, res) {
   const { commentId } = req.params;
@@ -15,4 +15,4 @@ async function deleteComment(req, res) {
   }
 }
 
-export default deleteComment;
+module.exports = deleteComment;

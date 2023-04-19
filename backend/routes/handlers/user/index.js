@@ -1,9 +1,9 @@
-import createUser from './create';
-import updateUser  from './put';
-import deleteUser from './delete';
-import {getUser, getUsers} from './get';
+const createUser = require('./create');
+const updateUser  = require('./put');
+const deleteUser = require('./delete');
+const {getUser, getUsers} = require('./get');
 
-export default {
+module.exports = {
     post: createUser,
     put: updateUser ,
     delete: deleteUser,

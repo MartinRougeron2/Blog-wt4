@@ -1,4 +1,4 @@
-import User from '../../../models/User';
+const User = require('../../../models/User');
 
 const bcrypt = require("bcrypt")
 
@@ -16,4 +16,4 @@ async function createUser(req, res) {
     res.status(201).json(user);
 }
 
-export default createUser;
+module.exports = createUser;

@@ -1,4 +1,4 @@
-import User from '../../../models/User';
+const User = require('../../../models/User');
 
 async function deleteUser(req, res) {
     const { id } = req.params;
@@ -7,4 +7,4 @@ async function deleteUser(req, res) {
     res.status(204).end();
 }
 
-export default deleteUser;
+module.exports = deleteUser;

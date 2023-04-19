@@ -10,5 +10,8 @@
     "mongoose-to-swagger": "^1.4.0",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^4.6.2"
+  },
+  "scripts": {
+    "start": "node app.js"
   }
 }

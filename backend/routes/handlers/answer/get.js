@@ -1,5 +1,5 @@
-import Answer from '../../../models/Answer';
-import Question from '../../../models/Question';
+const Answer = require('../../../models/Answer');
+const Question = require('../../../models/Question');
 
 async function handleGetAnswer(req, res, next) {
     const { answerId } = req.params;
@@ -29,4 +29,4 @@ async function handleGetAnswers(req, res, next) {
     });
 }
 
-export { handleGetAnswer, handleGetAnswers }
+module.exports = { handleGetAnswer, handleGetAnswers }

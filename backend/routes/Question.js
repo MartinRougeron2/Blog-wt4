@@ -4,7 +4,7 @@ const express = require('express')
 
 const router = new express.Router();
 
-const handlers = require('handlers/question');
+const handlers = require('./handlers/question');
 
 // swagger
 /**

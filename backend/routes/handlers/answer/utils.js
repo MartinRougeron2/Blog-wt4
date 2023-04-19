@@ -1,4 +1,4 @@
-import Answer from '../../../models/Answer';
+const Answer = require('../../../models/Answer');
 
 async function handleApproveAnswer(req, res, next){
     const { answerId } = req.params;
@@ -16,4 +16,4 @@ async function handleApproveAnswer(req, res, next){
     res.status(200).json(answer);
 }
 
-export default handleApproveAnswer;
+module.exports = handleApproveAnswer;

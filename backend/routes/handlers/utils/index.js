@@ -1,8 +1,8 @@
-import login from './login';
-import register from './register';
-import {refreshToken, verifyToken} from './token';
+const login = require('./login');
+const register = require('./register');
+const {refreshToken, verifyToken} = require('./token');
 
-export {
+module.exports = {
     login,
     register,
     refreshToken,

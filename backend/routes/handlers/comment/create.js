@@ -1,4 +1,4 @@
-import Comment from '../../../models/Comment';
+const Comment = require('../../../models/Comment');
 
 async function createComment(req, res) {
   const { text, postId } = req.body;
@@ -14,4 +14,4 @@ async function createComment(req, res) {
   res.json(comment);
 }
 
-export default createComment;
+module.exports = createComment;

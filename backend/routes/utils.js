@@ -2,7 +2,7 @@ const express = require('express')
 
 const router = new express.Router();
 
-const handlers = require('handlers/utils');
+const handlers = require('./handlers/utils');
 
 // swagger available authorization types
 /**

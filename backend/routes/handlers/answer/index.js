@@ -1,10 +1,10 @@
-import createAnswer from './create';
-import {handleGetAnswer, handleGetAnswers} from './get';
-import updateAnswer from './put';
-import deleteAnswer from './delete';
-import handleApproveAnswer from 'utils';
+const createAnswer = require('./create');
+const {handleGetAnswer, handleGetAnswers} = require('./get');
+const updateAnswer = require('./put');
+const deleteAnswer = require('./delete');
+const handleApproveAnswer = require('./utils');
 
-export default {
+module.exports = {
     post: createAnswer,
     get: handleGetAnswers,
     getOne: handleGetAnswer,

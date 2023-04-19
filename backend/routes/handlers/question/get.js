@@ -1,4 +1,4 @@
-import Question from '../../../models/Question';
+const Question = require('../../../models/Question');
 
 async function getQuestion(req, res) {
     const { id } = req.params;
@@ -16,4 +16,4 @@ async function getQuestions(req, res) {
     res.status(200).json(questions);
 }
 
-export { getQuestion, getQuestions };
+module.exports = { getQuestion, getQuestions };

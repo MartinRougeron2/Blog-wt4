@@ -1,5 +1,5 @@
-import Comment from '../../../models/Comment';
-import Answer from '../../../models/Answer';
+const Comment = require('../../../models/Comment');
+const Answer = require('../../../models/Answer');
 
 async function getComments(req, res) {
     const { postId } = req.params;
@@ -14,4 +14,4 @@ async function getComment(req, res) {
     res.json(comment);
 }
 
-export { getComments, getComment };
+module.exports = { getComments, getComment };

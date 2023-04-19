@@ -3,7 +3,7 @@ const express = require('express')
 
 const router = new express.Router();
 
-const handlers = require('handlers/answer');
+const handlers = require('./handlers/answer');
 
 
 // swagger

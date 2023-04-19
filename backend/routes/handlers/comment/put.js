@@ -1,4 +1,4 @@
-import Comment from '../../../models/Comment';
+const Comment = require('../../../models/Comment');
 
 async function updateComment(req, res) {
     const { commentId } = req.params;
@@ -12,4 +12,4 @@ async function updateComment(req, res) {
     res.json(comment);
 }
 
-export default updateComment;
+module.exports = updateComment;

@@ -25,7 +25,7 @@ async function verifyToken(req, res){
     res.status(200).json({token});
 }
 
-export {
+module.exports = {
     refreshToken,
     verifyToken,
 }
