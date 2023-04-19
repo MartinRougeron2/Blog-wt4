@@ -3,6 +3,8 @@ const express = require('express')
 
 const router = new express.Router();
 
+const handlers = require('handlers/user');
+
 // swagger
 /**
  * @swagger
@@ -37,7 +39,7 @@ const router = new express.Router();
  */
 
 router.post('users/', (req, res) => {
-
+    handlers.post(req, res).then(r => r).catch(e => e);
 });
 
 // swagger
@@ -58,7 +60,7 @@ router.post('users/', (req, res) => {
  */
 
 router.get('users/', (req, res) => {
-
+    handlers.get(req, res).then(r => r).catch(e => e);
 });
 
 // swagger
@@ -85,7 +87,7 @@ router.get('users/', (req, res) => {
  */
 
 router.get('users/:user_id/', (req, res) => {
-
+    handlers.getOne(req, res).then(r => r).catch(e => e);
 });
 
 // swagger
@@ -127,7 +129,7 @@ router.get('users/:user_id/', (req, res) => {
  */
 
 router.put('users/:user_id/', (req, res) => {
-
+    handlers.put(req, res).then(r => r).catch(e => e);
 });
 
 // swagger
@@ -154,7 +156,7 @@ router.put('users/:user_id/', (req, res) => {
  */
 
 router.delete('users/:user_id/', (req, res) => {
-
+    handlers.delete(req, res).then(r => r).catch(e => e);
 });
 
 module.exports = router;

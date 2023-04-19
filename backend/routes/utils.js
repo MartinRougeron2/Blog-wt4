@@ -2,6 +2,8 @@ const express = require('express')
 
 const router = new express.Router();
 
+const handlers = require('handlers/utils');
+
 // swagger available authorization types
 /**
  * @swagger
@@ -45,7 +47,7 @@ const router = new express.Router();
  */
 
 router.post('auth/login/', (req, res) => {
-
+    handlers.login(req, res).then(r => r).catch(e => e);
 });
 
 // swagger
@@ -82,7 +84,7 @@ router.post('auth/login/', (req, res) => {
  */
 
 router.post('auth/register/', (req, res) => {
-
+    handlers.register(req, res).then(r => r).catch(e => e);
 });
 
 // swagger
@@ -109,7 +111,7 @@ router.post('auth/register/', (req, res) => {
  */
 
 router.post('auth/token/refresh/', (req, res) => {
-
+    handlers.refreshToken(req, res).then(r => r).catch(e => e);
 });
 
 // swagger
@@ -135,7 +137,7 @@ router.post('auth/token/refresh/', (req, res) => {
  *         description: Server error
  */
 router.get('auth/token/verify/', (req, res) => {
-
+    handlers.verifyToken(req, res).then(r => r).catch(e => e);
 });
 
 module.exports = router;

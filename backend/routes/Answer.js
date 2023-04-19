@@ -3,6 +3,8 @@ const express = require('express')
 
 const router = new express.Router();
 
+const handlers = require('handlers/answer');
+
 
 // swagger
 /**
@@ -32,7 +34,7 @@ const router = new express.Router();
  *         description: Server error
  */
 router.post('questions/:question_id/answers/', (req, res) => {
-
+    handlers.post(req, res).then(r => r).catch(e => e);
 });
 
 // swagger
@@ -59,7 +61,7 @@ router.post('questions/:question_id/answers/', (req, res) => {
  */
 
 router.get('questions/:question_id/answers/', (req, res) => {
-
+    handlers.get(req, res).then(r => r).catch(e => e);
 });
 
 // swagger
@@ -91,7 +93,7 @@ router.get('questions/:question_id/answers/', (req, res) => {
  */
 
 router.get('questions/:question_id/answers/:answer_id/', (req, res) => {
-
+    handlers.getOne(req, res).then(r => r).catch(e => e);
 });
 
 // swagger
@@ -128,7 +130,7 @@ router.get('questions/:question_id/answers/:answer_id/', (req, res) => {
  */
 
 router.put('questions/:question_id/answers/:answer_id/', (req, res) => {
-
+    handlers.put(req, res).then(r => r).catch(e => e);
 });
 
 // swagger
@@ -160,7 +162,7 @@ router.put('questions/:question_id/answers/:answer_id/', (req, res) => {
  */
 
 router.delete('questions/:question_id/answers/:answer_id/', (req, res) => {
-
+    handlers.delete(req, res).then(r => r).catch(e => e);
 });
 
 // swagger
@@ -192,7 +194,7 @@ router.delete('questions/:question_id/answers/:answer_id/', (req, res) => {
  */
 
 router.post('questions/:question_id/answers/:answer_id/approve/', (req, res) => {
-
+    handlers.utils.handleApproveAnswer(req, res).then(r => r).catch(e => e);
 });
 
 module.exports = router;

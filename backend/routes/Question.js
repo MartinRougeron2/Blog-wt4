@@ -4,6 +4,8 @@ const express = require('express')
 
 const router = new express.Router();
 
+const handlers = require('handlers/question');
+
 // swagger
 /**
  * @swagger
@@ -49,9 +51,7 @@ const router = new express.Router();
  */
 
 router.post('/questions/', (req, res) => {
-    console.log("create a new question")
-    console.log(req.body)
-    res.status(201).send(req.body);
+    handlers.post(req, res).then(r => r).catch(e => e);
 });
 
 // swagger
@@ -77,7 +77,7 @@ router.post('/questions/', (req, res) => {
  */
 
 router.get('/questions/', (req, res) => {
-    console.log("get all questions")
+    handlers.get(req, res).then(r => r).catch(e => e);
 });
 
 // swagger
@@ -104,7 +104,7 @@ router.get('/questions/', (req, res) => {
  */
 
 router.get('/questions/:question_id/', (req, res) => {
-
+    handlers.getOne(req, res).then(r => r).catch(e => e);
 });
 
 // swagger
@@ -141,7 +141,7 @@ router.get('/questions/:question_id/', (req, res) => {
  */
 
 router.put('/questions/:question_id/', (req, res) => {
-
+    handlers.put(req, res).then(r => r).catch(e => e);
 });
 
 // swagger
@@ -168,7 +168,7 @@ router.put('/questions/:question_id/', (req, res) => {
  */
 
 router.put('/questions/:question_id/', (req, res) => {
-
+    handlers.put(req, res).then(r => r).catch(e => e);
 });
 
 // swagger
@@ -195,7 +195,7 @@ router.put('/questions/:question_id/', (req, res) => {
  */
 
 router.delete('/questions/:question_id/', (req, res) => {
-
+    handlers.delete(req, res).then(r => r).catch(e => e);
 });
 
 module.exports = router;

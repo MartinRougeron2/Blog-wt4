@@ -3,6 +3,8 @@ const express = require('express')
 
 const router = new express.Router();
 
+const handlers = require('handlers/comment');
+
 // swagger
 /**
  * @swagger
@@ -36,7 +38,7 @@ const router = new express.Router();
  *         description: Server error
  */
 router.post('questions/:question_id/answers/:answer_id/comments/', (req, res) => {
-
+    handlers.post(req, res).then(r => r).catch(e => e);
 });
 
 // swagger
@@ -70,7 +72,7 @@ router.post('questions/:question_id/answers/:answer_id/comments/', (req, res) =>
 router.get('questions/:question_id/answers/:answer_id/comments/', (req, res) => {
 
 });
-
+    handlers.get(req, res).then(r => r).catch(e => e);
 // swagger
 /**
  * @swagger
@@ -105,7 +107,7 @@ router.get('questions/:question_id/answers/:answer_id/comments/', (req, res) => 
  */
 
 router.get('questions/:question_id/answers/:answer_id/comments/:comment_id/', (req, res) => {
-
+    handlers.getOne(req, res).then(r => r).catch(e => e);
 });
 
 // swagger
@@ -147,7 +149,7 @@ router.get('questions/:question_id/answers/:answer_id/comments/:comment_id/', (r
  */
 
 router.put('questions/:question_id/answers/:answer_id/comments/:comment_id/', (req, res) => {
-
+    handlers.put(req, res).then(r => r).catch(e => e);
 });
 
 // swagger
@@ -184,7 +186,7 @@ router.put('questions/:question_id/answers/:answer_id/comments/:comment_id/', (r
  */
 
 router.delete('questions/:question_id/answers/:answer_id/comments/:comment_id/', (req, res) => {
-
+    handlers.delete(req, res).then(r => r).catch(e => e);
 });
 
 module.exports = router;
