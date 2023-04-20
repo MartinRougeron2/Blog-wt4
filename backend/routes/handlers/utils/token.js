@@ -3,13 +3,11 @@ const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
 
 async function refreshToken(req, res){
-    const { token } = req.body;
-    const user = await jwt.verify(token, process.env.JWT_SECRET);
-    if (!user) {
+    if (!req.user) {
         return res.status(403).end();
     }
     const newToken = await jwt.sign({
-        id: user.id,
+        id: req.user._id,
     }, process.env.JWT_SECRET, {
         expiresIn: '1d'
     });
@@ -17,12 +15,11 @@ async function refreshToken(req, res){
 }
 
 async function verifyToken(req, res){
-    const { token } = req.body;
-    const user = await jwt.verify(token, process.env.JWT_SECRET);
-    if (!user) {
+    console.log(req.user)
+    if (!req.user) {
         return res.status(403).end();
     }
-    res.status(200).json({token});
+    res.status(200).json({message: "Token is valid"});
 }
 
 module.exports = {

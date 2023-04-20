@@ -29,16 +29,19 @@ const handlers = require('./handlers/utils');
  *     produces:
  *       - application/json
  *     parameters:
- *       - name: email
- *         description: User email.
+ *       - name: Login object request body
+ *         description: Login object request body.
  *         in: body
  *         required: true
- *         type: string
- *       - name: password
- *         description: User password.
- *         in: body
- *         required: true
- *         type: string
+ *         type: object
+ *         schema:
+ *           properties:
+ *             email:
+ *               type: string
+ *               required: true
+ *             password:
+ *               type: string
+ *               required: true
  *     responses:
  *       200:
  *         description: A successful response
@@ -46,8 +49,11 @@ const handlers = require('./handlers/utils');
  *         description: Server error
  */
 
-router.post('auth/login/', (req, res) => {
-    handlers.login(req, res).then(r => r).catch(e => e);
+router.post('/auth/login/', (req, res) => {
+    handlers.login(req, res).then(r => r).catch(e => {
+        console.error(e);
+
+    });
 });
 
 // swagger
@@ -61,21 +67,32 @@ router.post('auth/login/', (req, res) => {
  *     produces:
  *       - application/json
  *     parameters:
- *       - name: name
- *         description: User name.
- *         in: body
- *         required: true
- *         type: string
- *       - name: email
- *         description: User email.
- *         in: body
- *         required: true
- *         type: string
- *       - name: password
- *         description: User password.
- *         in: body
- *         required: true
- *         type: string
+ *        - name: Question object request body
+ *          description: Question object request body.
+ *          in: body
+ *          required: true
+ *          type: object
+ *          schema:
+ *           properties:
+ *             name:
+ *               type: string
+ *               required: true
+ *               description: User name
+ *               example: "John Doe"
+ *               minLength: 1
+ *               maxLength: 100
+ *             email:
+ *               type: string
+ *               required: true
+ *               description: User email
+ *               example: "admin@node.com"
+ *               minLength: 1
+ *               maxLength: 100
+ *             password:
+ *               type: string
+ *               required: true
+ *               description: User password
+ *               example: "123456"
  *     responses:
  *       200:
  *         description: A successful response
@@ -83,8 +100,11 @@ router.post('auth/login/', (req, res) => {
  *         description: Server error
  */
 
-router.post('auth/register/', (req, res) => {
-    handlers.register(req, res).then(r => r).catch(e => e);
+router.post('/auth/register/', (req, res) => {
+    handlers.register(req, res).then(r => r).catch(e => {
+        console.error(e);
+
+    });
 });
 
 // swagger
@@ -110,8 +130,11 @@ router.post('auth/register/', (req, res) => {
  *         description: Server error
  */
 
-router.post('auth/token/refresh/', (req, res) => {
-    handlers.refreshToken(req, res).then(r => r).catch(e => e);
+router.post('/auth/token/refresh/', (req, res) => {
+    handlers.refreshToken(req, res).then(r => r).catch(e => {
+        console.error(e);
+
+    });
 });
 
 // swagger
@@ -124,20 +147,17 @@ router.post('auth/token/refresh/', (req, res) => {
  *     description: Verify token
  *     produces:
  *       - application/json
- *     parameters:
- *       - name: token
- *         description: Refresh token.
- *         in: body
- *         required: true
- *         type: string
  *     responses:
  *       200:
  *         description: A successful response
  *       500:
  *         description: Server error
  */
-router.get('auth/token/verify/', (req, res) => {
-    handlers.verifyToken(req, res).then(r => r).catch(e => e);
+router.get('/auth/token/verify/', (req, res) => {
+    handlers.verifyToken(req, res).then(r => r).catch(e => {
+        console.error(e);
+
+    });
 });
 
 module.exports = router;

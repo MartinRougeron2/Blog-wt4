@@ -13,6 +13,7 @@ async function getQuestion(req, res) {
 
 async function getQuestions(req, res) {
     const questions = await Question.find();
+    await Question.populate(questions, { path: 'user' });
     res.status(200).json(questions);
 }
 

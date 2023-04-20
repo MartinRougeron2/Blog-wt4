@@ -5,8 +5,8 @@ async function createQuestion(req, res) {
 
     const question = new Question({
         title,
-        description,
-        tags,
+        body: description,
+        user: req?.user?._id
     });
     await question.save();
     res.status(201).json(question);

@@ -32,7 +32,7 @@ const handlers = require('./handlers/question');
  *               minLength: 1
  *               maxLength: 100
  *               pattern: "^[a-zA-Z0-9 ]+$"
- *             body:
+ *             description:
  *               type: string
  *               required: true
  *               description: Question body
@@ -51,7 +51,10 @@ const handlers = require('./handlers/question');
  */
 
 router.post('/questions/', (req, res) => {
-    handlers.post(req, res).then(r => r).catch(e => e);
+    handlers.post(req, res).then(r => r).catch(e => {
+        console.error(e);
+        
+    });
 });
 
 // swagger
@@ -77,7 +80,10 @@ router.post('/questions/', (req, res) => {
  */
 
 router.get('/questions/', (req, res) => {
-    handlers.get(req, res).then(r => r).catch(e => e);
+    handlers.get(req, res).then(r => r).catch(e => {
+        console.error(e);
+        
+    });
 });
 
 // swagger
@@ -104,7 +110,10 @@ router.get('/questions/', (req, res) => {
  */
 
 router.get('/questions/:question_id/', (req, res) => {
-    handlers.getOne(req, res).then(r => r).catch(e => e);
+    handlers.getOne(req, res).then(r => r).catch(e => {
+        console.error(e);
+        
+    });
 });
 
 // swagger
@@ -141,7 +150,10 @@ router.get('/questions/:question_id/', (req, res) => {
  */
 
 router.put('/questions/:question_id/', (req, res) => {
-    handlers.put(req, res).then(r => r).catch(e => e);
+    handlers.put(req, res).then(r => r).catch(e => {
+        console.error(e);
+        
+    });
 });
 
 // swagger
@@ -168,7 +180,10 @@ router.put('/questions/:question_id/', (req, res) => {
  */
 
 router.put('/questions/:question_id/', (req, res) => {
-    handlers.put(req, res).then(r => r).catch(e => e);
+    handlers.put(req, res).then(r => r).catch(e => {
+        console.error(e);
+        
+    });
 });
 
 // swagger
@@ -195,7 +210,10 @@ router.put('/questions/:question_id/', (req, res) => {
  */
 
 router.delete('/questions/:question_id/', (req, res) => {
-    handlers.delete(req, res).then(r => r).catch(e => e);
+    handlers.delete(req, res).then(r => r).catch(e => {
+        console.error(e);
+        
+    });
 });
 
 module.exports = router;
