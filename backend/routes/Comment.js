@@ -26,21 +26,27 @@ const handlers = require('./handlers/comment');
  *         in: path
  *         required: true
  *         type: string
- *       - name: body
- *         description: Comment body.
+ *       - name: comment object
+ *         description: Comment object.
  *         in: body
  *         required: true
- *         type: string
+ *         schema:
+ *           properties:
+ *             comment:
+ *               type: string
+ *               example: "This is a comment"
+ *               description: Comment body
+ *               required: true
  *     responses:
  *       200:
  *         description: Successfully created
  *       500:
  *         description: Server error
  */
-router.post('questions/:question_id/answers/:answer_id/comments/', (req, res) => {
+router.post('/questions/:question_id/answers/:answer_id/comments/', (req, res) => {
     handlers.post(req, res).then(r => r).catch(e => {
         console.error(e);
-        
+
     });
 });
 
@@ -72,11 +78,11 @@ router.post('questions/:question_id/answers/:answer_id/comments/', (req, res) =>
  *         description: Server error
  */
 
-router.get('questions/:question_id/answers/:answer_id/comments/', (req, res) => {
+router.get('/questions/:question_id/answers/:answer_id/comments/', (req, res) => {
 
     handlers.get(req, res).then(r => r).catch(e => {
         console.error(e);
-        
+
     });
 });
 // swagger
@@ -112,10 +118,10 @@ router.get('questions/:question_id/answers/:answer_id/comments/', (req, res) => 
  *         description: Server error
  */
 
-router.get('questions/:question_id/answers/:answer_id/comments/:comment_id/', (req, res) => {
+router.get('/questions/:question_id/answers/:answer_id/comments/:comment_id/', (req, res) => {
     handlers.getOne(req, res).then(r => r).catch(e => {
         console.error(e);
-        
+
     });
 });
 
@@ -145,11 +151,17 @@ router.get('questions/:question_id/answers/:answer_id/comments/:comment_id/', (r
  *         in: path
  *         required: true
  *         type: string
- *       - name: body
- *         description: Comment body.
+ *       - name: comment object
+ *         description: Comment object.
  *         in: body
  *         required: true
- *         type: string
+ *         schema:
+ *           properties:
+ *             comment:
+ *               type: string
+ *               example: "This is a new comment"
+ *               description: Comment body
+ *               required: true
  *     responses:
  *       200:
  *         description: Successfully updated
@@ -157,10 +169,10 @@ router.get('questions/:question_id/answers/:answer_id/comments/:comment_id/', (r
  *         description: Server error
  */
 
-router.put('questions/:question_id/answers/:answer_id/comments/:comment_id/', (req, res) => {
+router.put('/questions/:question_id/answers/:answer_id/comments/:comment_id/', (req, res) => {
     handlers.put(req, res).then(r => r).catch(e => {
         console.error(e);
-        
+
     });
 });
 
@@ -197,10 +209,10 @@ router.put('questions/:question_id/answers/:answer_id/comments/:comment_id/', (r
  *         description: Server error
  */
 
-router.delete('questions/:question_id/answers/:answer_id/comments/:comment_id/', (req, res) => {
+router.delete('/questions/:question_id/answers/:answer_id/comments/:comment_id/', (req, res) => {
     handlers.delete(req, res).then(r => r).catch(e => {
         console.error(e);
-        
+
     });
 });
 

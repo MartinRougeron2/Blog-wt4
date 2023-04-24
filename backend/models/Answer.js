@@ -6,10 +6,6 @@ const answerSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
   },
-  question: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Question'
-  },
   body: {
     type: String,
     required: true
@@ -26,10 +22,12 @@ const answerSchema = new mongoose.Schema({
     type: Number,
     default: 0
   },
-  upvotes: {
-    type: Number,
-    default: 0
-  },
+  upvotes: [
+    {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    }
+  ],
   comments: [
     {
       type: mongoose.Schema.Types.ObjectId,

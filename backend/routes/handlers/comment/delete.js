@@ -1,18 +1,19 @@
 const Comment = require('../../../models/Comment');
 
 async function deleteComment(req, res) {
-  const { commentId } = req.params;
+  const { comment_id } = req.params;
   const { user } = req;
-  const { id: userId } = user;
 
-  const comment = await Comment.findById(commentId);
+  const comment = await Comment.findById(comment_id);
 
-  if (comment.user.id === userId || req.user.role === 'admin') {
-    await comment.destroy();
-    res.json(comment);
-  } else {
-    res.status(401).json({ error: 'Unauthorized' });
-  }
+    if (!comment) {
+        return res.status(404).json({ error: 'Comment not found' });
+    }
+    if (comment.user.toString() !== user._id.toString() && user.role !== 'admin') {
+        return res.status(401).json({ error: 'Unauthorized' });
+    }
+    await Comment.findByIdAndDelete(comment_id);
+    res.status(200).json({ message: 'Comment deleted' });
 }
 
 module.exports = deleteComment;

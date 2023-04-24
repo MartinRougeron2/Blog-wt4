@@ -23,10 +23,12 @@ const questionSchema = new mongoose.Schema({
       ref: 'Answer'
     }
   ],
-  upvotes: {
-    type: Number,
-    default: 0
-  }
+  upvotes: [
+    {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    }
+    ],
 });
 
 const Question = mongoose.model('Question', questionSchema);

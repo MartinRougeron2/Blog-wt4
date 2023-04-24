@@ -53,7 +53,7 @@ const handlers = require('./handlers/question');
 router.post('/questions/', (req, res) => {
     handlers.post(req, res).then(r => r).catch(e => {
         console.error(e);
-        
+
     });
 });
 
@@ -82,7 +82,7 @@ router.post('/questions/', (req, res) => {
 router.get('/questions/', (req, res) => {
     handlers.get(req, res).then(r => r).catch(e => {
         console.error(e);
-        
+
     });
 });
 
@@ -112,7 +112,7 @@ router.get('/questions/', (req, res) => {
 router.get('/questions/:question_id/', (req, res) => {
     handlers.getOne(req, res).then(r => r).catch(e => {
         console.error(e);
-        
+
     });
 });
 
@@ -132,16 +132,23 @@ router.get('/questions/:question_id/', (req, res) => {
  *         in: path
  *         required: true
  *         type: string
- *       - name: title
- *         description: Question title.
+ *       - name: Question object request body
+ *         description: Question object request body.
  *         in: body
  *         required: true
- *         type: string
- *       - name: body
- *         description: Question body.
- *         in: body
- *         required: true
- *         type: string
+ *         type: object
+ *         schema:
+ *           properties:
+ *             title:
+ *               type: string
+ *               required: true
+ *               description: Question title
+ *               example: "How to create a REST API?"
+ *             description:
+ *               type: string
+ *               required: true
+ *               description: Question body
+ *               example: "I want to create a REST API using Node.js and Express.js. How can I do that?"
  *     responses:
  *       200:
  *         description: Successfully updated
@@ -152,7 +159,7 @@ router.get('/questions/:question_id/', (req, res) => {
 router.put('/questions/:question_id/', (req, res) => {
     handlers.put(req, res).then(r => r).catch(e => {
         console.error(e);
-        
+
     });
 });
 
@@ -182,7 +189,7 @@ router.put('/questions/:question_id/', (req, res) => {
 router.put('/questions/:question_id/', (req, res) => {
     handlers.put(req, res).then(r => r).catch(e => {
         console.error(e);
-        
+
     });
 });
 
@@ -212,7 +219,40 @@ router.put('/questions/:question_id/', (req, res) => {
 router.delete('/questions/:question_id/', (req, res) => {
     handlers.delete(req, res).then(r => r).catch(e => {
         console.error(e);
-        
+
+    });
+});
+
+// swagger
+/**
+ * @swagger
+ * /api/questions/{question_id}/upvote:
+ *  post:
+ *    tags:
+ *      - Questions
+ *    description: Upvote a question
+ *    produces:
+ *      - application/json
+ *    parameters:
+ *      - name: question_id
+ *        description: Question object id.
+ *        in: path
+ *        required: true
+ *        type: string
+ *    responses:
+ *      200:
+ *        description: Successfully upvoted
+ *      500:
+ *        description: Server error
+ *      404:
+ *        description: Question not found
+ *      400:
+ *        description: Upvote already exists
+ */
+
+router.post('/questions/:question_id/upvote', (req, res) => {
+    handlers.utils.upvoteQuestion(req, res).then(r => r).catch(e => {
+        console.error(e);
     });
 });
 

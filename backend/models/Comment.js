@@ -1,14 +1,10 @@
 const mongoose = require('mongoose');
 
 const CommentSchema = new mongoose.Schema({
- user: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User'
-  },
-  answer: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Answer'
-  },
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    },
     body: {
      type: String,
         required: true
@@ -17,14 +13,12 @@ const CommentSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    upvotes: {
-        type: Number,
-        default: 0
-    },
-    downvotes: {
-        type: Number,
-        default: 0
-    },
+    upvotes: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User'
+        }
+    ]
 });
 
 const Comment = mongoose.model('Comment', CommentSchema);

@@ -1,21 +1,21 @@
 const Answer = require('../../../models/Answer');
 
 async function handleUpdateAnswer(req, res, next) {
-    const { answerId } = req.params;
-    const { answerBody } = req.body;
-    const { user } = req.user;
+    const { answer_id } = req.params;
+    const { answer } = req.body;
+    const { user } = req;
 
-    const answer = await Answer.findById(answerId);
+    const get_answer = await Answer.findById(answer_id);
 
-    if (!answer) {
+    if (!get_answer) {
         return res.status(404).json({ error: 'Answer not found' });
     }
-    if (answer.user.toString() !== user._id.toString() && user.role !== 'admin') {
+    if (get_answer.user.toString() !== user._id.toString() && user.role !== 'admin') {
         return res.status(401).json({ error: 'Unauthorized' });
     }
-    answer.body = answerBody;
-    await answer.save();
-    res.status(200).json(answer);
+    get_answer.body = answer;
+    await get_answer.save();
+    res.status(200).json(get_answer);
 }
 
 module.exports = handleUpdateAnswer;

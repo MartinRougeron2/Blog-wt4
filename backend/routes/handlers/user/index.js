@@ -7,8 +7,8 @@ module.exports = {
     post: createUser,
     put: updateUser ,
     delete: deleteUser,
-    get: getUser,
-    getOne: getUsers,
+    get: getUsers,
+    getOne: getUser,
     utils: {
     }
 }

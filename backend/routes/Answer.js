@@ -23,20 +23,25 @@ const handlers = require('./handlers/answer');
  *         required: true
  *         type: string
  *       - name: body
- *         description: Answer body.
+ *         description: Answer body object.
  *         in: body
  *         required: true
- *         type: string
+ *         type: object
+ *         properties:
+ *           answer:
+ *             type: string
+ *             example: "This is an answer"
+ *             required: true
  *     responses:
  *       200:
  *         description: Successfully created
  *       500:
  *         description: Server error
  */
-router.post('questions/:question_id/answers/', (req, res) => {
+router.post('/questions/:question_id/answers/', (req, res) => {
     handlers.post(req, res).then(r => r).catch(e => {
         console.error(e);
-        
+
     });
 });
 
@@ -63,10 +68,10 @@ router.post('questions/:question_id/answers/', (req, res) => {
  *         description: Server error
  */
 
-router.get('questions/:question_id/answers/', (req, res) => {
+router.get('/questions/:question_id/answers/', (req, res) => {
     handlers.get(req, res).then(r => r).catch(e => {
         console.error(e);
-        
+
     });
 });
 
@@ -98,10 +103,10 @@ router.get('questions/:question_id/answers/', (req, res) => {
  *         description: Server error
  */
 
-router.get('questions/:question_id/answers/:answer_id/', (req, res) => {
+router.get('/questions/:question_id/answers/:answer_id/', (req, res) => {
     handlers.getOne(req, res).then(r => r).catch(e => {
         console.error(e);
-        
+
     });
 });
 
@@ -127,10 +132,15 @@ router.get('questions/:question_id/answers/:answer_id/', (req, res) => {
  *         required: true
  *         type: string
  *       - name: body
- *         description: Answer body.
+ *         description: Answer body object.
  *         in: body
  *         required: true
- *         type: string
+ *         type: object
+ *         properties:
+ *           answer:
+ *             type: string
+ *             example: "This is an new answer"
+ *             required: true
  *     responses:
  *       200:
  *         description: Successfully updated
@@ -138,10 +148,10 @@ router.get('questions/:question_id/answers/:answer_id/', (req, res) => {
  *         description: Server error
  */
 
-router.put('questions/:question_id/answers/:answer_id/', (req, res) => {
+router.put('/questions/:question_id/answers/:answer_id/', (req, res) => {
     handlers.put(req, res).then(r => r).catch(e => {
         console.error(e);
-        
+
     });
 });
 
@@ -173,10 +183,10 @@ router.put('questions/:question_id/answers/:answer_id/', (req, res) => {
  *         description: Server error
  */
 
-router.delete('questions/:question_id/answers/:answer_id/', (req, res) => {
+router.delete('/questions/:question_id/answers/:answer_id/', (req, res) => {
     handlers.delete(req, res).then(r => r).catch(e => {
         console.error(e);
-        
+
     });
 });
 
@@ -208,10 +218,10 @@ router.delete('questions/:question_id/answers/:answer_id/', (req, res) => {
  *         description: Server error
  */
 
-router.post('questions/:question_id/answers/:answer_id/approve/', (req, res) => {
+router.post('/questions/:question_id/answers/:answer_id/approve/', (req, res) => {
     handlers.utils.handleApproveAnswer(req, res).then(r => r).catch(e => {
         console.error(e);
-        
+
     });
 });
 
