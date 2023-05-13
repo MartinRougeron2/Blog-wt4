@@ -225,6 +225,35 @@ router.post('/questions/:question_id/answers/:answer_id/approve/', (req, res) =>
     });
 });
 
+// swagger
+/**
+ * @swagger
+ * /api/questions/{question_id}/answers/{answer_id}/upvote:
+ *   post:
+ *     tags:
+ *       - Answers
+ *     description: Upvotes a answer
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: question_id
+ *         description: Question object id.
+ *         in: path
+ *         required: true
+ *         type: string
+ *       - name: answer_id
+ *         description: Answer object id.
+ *         in: path
+ *         required: true
+ *         type: string
+ *     responses:
+ *       200:
+ *         description: Successfully approved
+ *       500:
+ *         description: Server error
+ */
+
+
 router.post('/questions/:question_id/answers/:answer_id/upvote/', (req, res) => {
     handlers.utils.handleUpvoteAnswer(req, res).then(r => r).catch(e => {
         console.error(e);
