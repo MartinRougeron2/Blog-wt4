@@ -2,7 +2,7 @@ const createAnswer = require('./create');
 const {handleGetAnswer, handleGetAnswers} = require('./get');
 const updateAnswer = require('./put');
 const deleteAnswer = require('./delete');
-const handleApproveAnswer = require('./utils');
+const {handleApproveAnswer, handleUpvoteAnswer} = require('./utils');
 
 module.exports = {
     post: createAnswer,
@@ -12,5 +12,6 @@ module.exports = {
     delete: deleteAnswer,
     utils: {
         handleApproveAnswer,
+        handleUpvoteAnswer
     }
 }

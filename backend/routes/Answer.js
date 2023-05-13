@@ -225,4 +225,10 @@ router.post('/questions/:question_id/answers/:answer_id/approve/', (req, res) =>
     });
 });
 
+router.post('/questions/:question_id/answers/:answer_id/upvote/', (req, res) => {
+    handlers.utils.handleUpvoteAnswer(req, res).then(r => r).catch(e => {
+        console.error(e);
+    });
+});
+
 module.exports = router;
