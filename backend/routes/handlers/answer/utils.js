@@ -28,6 +28,10 @@ async function handleUpvoteAnswer(req, res, next) {
     const {answer_id, question_id} = req.params;
     const {user} = req;
 
+    if (!user) {
+        return res.status(401).end();
+    }
+
   const answer = await Answer.findById(answer_id);
     const question = await Question.findById(question_id);
 
@@ -40,9 +44,6 @@ async function handleUpvoteAnswer(req, res, next) {
     }
     console.log(question.user, user._id, user.role);
 
-    if (answer?.user?.toString() !== user._id.toString() && user.role !== 'admin') {
-        return res.status(401).json({ error: 'Unauthorized' });
-    }
 
     await Answer.populate(answer, { path: 'user' });
 
