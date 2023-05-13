@@ -160,4 +160,26 @@ router.get('/auth/token/verify/', (req, res) => {
     });
 });
 
+// swagger
+/**
+ * @swagger
+ * /api/auth/me:
+ *  get:
+ *     tags:
+ *       - Auth
+ *     description: Get user info by token
+ *     produces:
+ *       - application/json
+ *     responses:
+ *       200:
+ *         description: A successful response
+ *       500:
+ *         description: Server error
+ */
+router.get('/auth/me', (req, res) => {
+    handlers.me(req, res).then(r => r).catch(e => {
+        console.error(e);
+    });
+});
+
 module.exports = router;

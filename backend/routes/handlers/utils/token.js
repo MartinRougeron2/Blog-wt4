@@ -22,7 +22,18 @@ async function verifyToken(req, res){
     res.status(200).json({message: "Token is valid"});
 }
 
+async function getUserFromToken(req, res){
+    if (!req.user) {
+        return res.status(400).json({error: "Token is invalid"});
+    }
+    let user = req.user;
+    user.password = null;
+    res.status(200).json(user);
+}
+
+
 module.exports = {
     refreshToken,
     verifyToken,
+    getUserFromToken
 }
